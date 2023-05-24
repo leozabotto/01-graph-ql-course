@@ -3,18 +3,22 @@ import { ApolloServer, gql } from 'apollo-server';
 const server = new ApolloServer({
   typeDefs: gql`
     type Query {
-      hello: String
-      hi: String
+      id: ID
+      name: String
+      age: Int
+      height: Float
+      married: Boolean!
+      arrayStrings: [String!]
     }
   `,
   resolvers: {
     Query: {
-      hello: () => {
-        return 'Hello again!';
-      },
-      hi: () => {
-        return 'Hi!';
-      },
+      id: () => '1',
+      name: () => 'Leo',
+      age: () => 20,
+      height: () => 1.82,
+      married: () => false,
+      arrayStrings: () => ['A', 'B'],
     },
   },
 });
